@@ -5,7 +5,7 @@ import (
 	"log"
 	"os"
 
-	"github.com/Shrihari8726/Gonic-Gin-REST-API-2024/godotenv"
+	"github.com/joho/godotenv"
 )
 
 func LoadConfig() {
