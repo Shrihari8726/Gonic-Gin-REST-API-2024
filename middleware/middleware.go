@@ -1,5 +1,5 @@
 // middlewares/auth_middleware.go
-package middlewares
+package middleware
 
 import (
 	"net/http"

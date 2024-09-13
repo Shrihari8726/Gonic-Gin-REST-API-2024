@@ -18,7 +18,11 @@ import (
 var userCollection *mongo.Collection
 
 func init() {
-	clientOptions := options.Client().ApplyURI(config.GetMongoURI())
+	config.LoadConfig()
+	//fmt.Println(config.GetMongoURI())
+	serverAPI := options.ServerAPI(options.ServerAPIVersion1)
+	clientOptions := options.Client().ApplyURI(config.GetMongoURI()).SetServerAPIOptions(serverAPI)
+	//clientOptions := options.Client().ApplyURI("mongodb+srv://myAtlasDBUser:Hari8726@myatlasclusteredu.tubig5r.mongodb.net/?retryWrites=true&w=majority&appName=myAtlasClusterEDU").SetServerAPIOptions(serverAPI)
 	client, err := mongo.Connect(context.TODO(), clientOptions)
 	if err != nil {
 		utils.LogError(err)
