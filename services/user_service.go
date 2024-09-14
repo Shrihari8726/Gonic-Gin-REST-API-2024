@@ -8,7 +8,6 @@ import (
 	"example.com/gonicginrestapi/config"
 	"example.com/gonicginrestapi/models"
 	"example.com/gonicginrestapi/utils"
-
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
@@ -19,10 +18,7 @@ var userCollection *mongo.Collection
 
 func init() {
 	config.LoadConfig()
-	//fmt.Println(config.GetMongoURI())
-	serverAPI := options.ServerAPI(options.ServerAPIVersion1)
-	clientOptions := options.Client().ApplyURI(config.GetMongoURI()).SetServerAPIOptions(serverAPI)
-	//clientOptions := options.Client().ApplyURI("mongodb+srv://myAtlasDBUser:Hari8726@myatlasclusteredu.tubig5r.mongodb.net/?retryWrites=true&w=majority&appName=myAtlasClusterEDU").SetServerAPIOptions(serverAPI)
+	clientOptions := options.Client().ApplyURI(config.GetMongoURI())
 	client, err := mongo.Connect(context.TODO(), clientOptions)
 	if err != nil {
 		utils.LogError(err)

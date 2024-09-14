@@ -18,9 +18,6 @@ func LoadConfig() {
 		log.Fatal("Error loading .env file")
 	}
 
-	//mongoDB := myEnv["MONGO_URI"]
-	//fmt.Println("This is URI:", mongoDB)
-
 }
 
 func GetEnv(key string) string {
