@@ -29,6 +29,7 @@ func init() {
 func CreateUser(user models.User) error {
 	hashedPassword, _ := bcrypt.GenerateFromPassword([]byte(user.Password), 14)
 	user.Password = string(hashedPassword)
+	user.UserID = utils.GenerateID()
 
 	_, err := userCollection.InsertOne(context.TODO(), user)
 	return err
